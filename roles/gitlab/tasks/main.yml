@@ -1,0 +1,55 @@
+- name: Create "{{ gitlab_db_name }}" database
+  become: yes
+  become_user: postgres
+  postgresql_db:
+    name: "{{ gitlab_db_name }}"
+
+- name: Adds pg_trgm extension to "{{ gitlab_db_name }}" database
+  become: yes
+  become_user: postgres
+  postgresql_ext:
+    name: pg_trgm
+    db: "{{ gitlab_db_name }}"
+    version: latest
+
+- name: Create "{{ gitlab_db_user }}" user
+  become: yes
+  become_user: postgres
+  postgresql_user:
+    name: "{{ gitlab_db_user }}"
+    password: "{{ gitlab_db_password }}"
+
+- name: Install dependencies
+  become: yes
+  apt:
+    name: apt-transport-https
+
+- name: Add gitlab apt key
+  become: true
+  apt_key:
+    url: https://packages.gitlab.com/gitlab/gitlab-ce/gpgkey
+
+- name: Add gitlab sources
+  become: true
+  apt_repository:
+    repo: 'deb https://packages.gitlab.com/gitlab/gitlab-ce/ubuntu/ bionic main'
+
+- name: Refresh apt cache
+  become: true
+  apt:
+    update_cache: yes
+
+- name: Install the gitlab-ce package
+  become: yes
+  apt:
+    name: gitlab-ce
+
+- name: Copy gitlab configurations
+  become: true
+  template:
+    src: ../files/gitlab.rb
+    dest: /etc/gitlab
+
+- name: Reload gitlab configurations
+  become: true
+  shell: gitlab-ctl reconfigure

@@ -1,0 +1,14 @@
+- name: Install postgresql server and client
+  become: yes
+  apt:
+    name: [postgresql, postgresql-client]
+
+- name: Install python requirement for postgresql
+  become: yes
+  apt:
+    name: python3-psycopg2
+
+- name: Install contrib package to install extension
+  become: yes
+  apt:
+    name: postgresql-contrib

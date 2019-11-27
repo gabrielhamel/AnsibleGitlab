@@ -2,3 +2,5 @@
   roles:
     - config_base
     - postgresql
+    - redis
+    - gitlab
