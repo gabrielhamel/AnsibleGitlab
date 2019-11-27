@@ -1,0 +1,16 @@
+- name: Setting locale to en_US.UTF-8
+  lineinfile:
+    path: "/home/{{ ansible_user }}/.profile"
+    line: "LC_ALL=en_US.UTF-8"
+  environment:
+    LC_ALL: en_US.UTF-8
+
+- name: Update apt cache list
+  become: true
+  apt:
+    update_cache: yes
+
+- name: Upgrade all packages
+  become: true
+  apt:
+    upgrade: dist
