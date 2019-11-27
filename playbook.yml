@@ -1,3 +1,4 @@
 - hosts: gcoding
   roles:
     - config_base
+    - postgresql
