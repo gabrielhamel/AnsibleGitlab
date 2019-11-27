@@ -1,6 +1,6 @@
 - hosts: gcoding
   roles:
-    - config_base
+    - base
     - postgresql
     - redis
     - gitlab

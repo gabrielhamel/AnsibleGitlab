@@ -1,0 +1,10 @@
+gitlab_url: http://example.url
+
+gitlab_db_name: examble_db
+gitlab_db_user: example_user
+gitlab_db_password: example_password
+
+gitlab_redis_host: 127.0.0.1
+gitlab_redis_port: 6379
+gitlab_db_host: 127.0.0.1
+gitlab_db_port: 5432
