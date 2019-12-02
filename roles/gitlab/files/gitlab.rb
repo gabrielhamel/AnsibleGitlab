@@ -1754,15 +1754,15 @@ redis['enable'] = false
 #     'path' => '/mnt/nfs-02/git-data/repositories'
 #   }
 # ]
-# gitaly['concurrency'] = [
-#   {
-#     'rpc' => "/gitaly.SmartHTTPService/PostReceivePack",
-#     'max_per_repo' => 20
-#   }, {
-#     'rpc' => "/gitaly.SSHService/SSHUploadPack",
-#     'max_per_repo' => 5
-#   }
-# ]
+gitaly['concurrency'] = [
+  {
+    'rpc' => "/gitaly.SmartHTTPService/PostReceivePack",
+    'max_per_repo' => 1
+  }, {
+    'rpc' => "/gitaly.SSHService/SSHUploadPack",
+    'max_per_repo' => 1
+  }
+]
 
 ################################################################################
 ## Praefect
