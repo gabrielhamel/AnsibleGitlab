@@ -801,7 +801,7 @@ gitlab_rails['redis_port'] = {{ gitlab_redis_port }}
 # sidekiq['log_directory'] = "/var/log/gitlab/sidekiq"
 # sidekiq['log_format'] = "json"
 # sidekiq['shutdown_timeout'] = 4
-# sidekiq['concurrency'] = 25
+sidekiq['concurrency'] = 1
 # sidekiq['metrics_enabled'] = true
 # sidekiq['listen_address'] = "localhost"
 # sidekiq['listen_port'] = 8082
@@ -1985,7 +1985,7 @@ redis['enable'] = false
 # sidekiq_cluster['ha'] = false
 # sidekiq_cluster['log_directory'] = "/var/log/gitlab/sidekiq-cluster"
 # sidekiq_cluster['interval'] = 5 # The number of seconds to wait between worker checks
-# sidekiq_cluster['max_concurrency'] = 50 # The maximum number of threads each Sidekiq process should run
+sidekiq_cluster['max_concurrency'] = 1 # The maximum number of threads each Sidekiq process should run
 
 ##! Each entry in the queue_groups array denotes a group of queues that have to be processed by a
 ##! Sidekiq process. Multiple queues can be processed by the same process by
