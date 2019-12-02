@@ -1,0 +1,20 @@
+- name: Create "{{ gitlab_db_name }}" database
+  become: yes
+  become_user: postgres
+  postgresql_db:
+    name: "{{ gitlab_db_name }}"
+
+- name: Adds pg_trgm extension to "{{ gitlab_db_name }}" database
+  become: yes
+  become_user: postgres
+  postgresql_ext:
+    name: pg_trgm
+    db: "{{ gitlab_db_name }}"
+    version: latest
+
+- name: Create "{{ gitlab_db_user }}" user
+  become: yes
+  become_user: postgres
+  postgresql_user:
+    name: "{{ gitlab_db_user }}"
+    password: "{{ gitlab_db_password }}"

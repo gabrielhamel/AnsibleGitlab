@@ -3,4 +3,5 @@
     - base
     - postgresql
     - redis
+    - gitlab_prepare_db
     - gitlab
