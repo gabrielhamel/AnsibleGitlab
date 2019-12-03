@@ -757,7 +757,7 @@ gitlab_rails['redis_port'] = {{ gitlab_redis_port }}
 ###! Docs: https://about.gitlab.com/2015/06/05/how-gitlab-uses-unicorn-and-unicorn-worker-killer/
 ###!       https://github.com/kzk/unicorn-worker-killer
 # unicorn['worker_memory_limit_min'] = "400 * 1 << 20"
-# unicorn['worker_memory_limit_max'] = "650 * 1 << 20"
+unicorn['worker_memory_limit_max'] = "100 * 1 << 20"
 
 # unicorn['exporter_enabled'] = false
 # unicorn['exporter_address'] = "127.0.0.1"
